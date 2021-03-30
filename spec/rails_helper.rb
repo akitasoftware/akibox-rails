@@ -11,6 +11,7 @@ require 'rspec/rails'
 
 # require database cleaner at the top level
 require 'database_cleaner'
+require 'shoulda/matchers'
 
 # [...]
 # configure shoulda matchers to use rspec as the test framework and full
