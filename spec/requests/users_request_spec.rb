@@ -21,10 +21,10 @@ RSpec.describe "Users", type: :request do
       before { post '/users', params: valid_attributes }
 
       it 'creates a user' do
-        expect(JSON.parse(response.body)['first_name']).to eq('Tami')
-        expect(JSON.parse(response.body)['last_name']).to eq('Kelley')
-        expect(JSON.parse(response.body)['email']).to eq('auchiha.aopitho3l@handscuts.com')
-        expect(JSON.parse(response.body)['phone_number']).to eq('715-333-6687')
+        expect(JSON.parse(response.body)['first_name']).to eq(valid_attributes[:first_name])
+        expect(JSON.parse(response.body)['last_name']).to eq(valid_attributes[:last_name])
+        expect(JSON.parse(response.body)['email']).to eq(valid_attributes[:email])
+        expect(JSON.parse(response.body)['phone_number']).to eq(valid_attributes[:phone_number])
       end
 
       it 'returns status code 201' do
