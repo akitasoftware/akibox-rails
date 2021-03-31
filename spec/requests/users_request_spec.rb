@@ -21,10 +21,10 @@ RSpec.describe "Users", type: :request do
       before { post '/users', params: valid_attributes }
 
       it 'creates a user' do
-        expect(json['first_name']).to eq('Tami')
-        expect(json['last_name']).to eq('Kelley')
-        expect(json['email']).to eq('auchiha.aopitho3l@handscuts.com')
-        expect(json['phone_number']).to eq('715-333-6687')
+        expect(JSON.parse(response.body)['first_name']).to eq('Tami')
+        expect(JSON.parse(response.body)['last_name']).to eq('Kelley')
+        expect(JSON.parse(response.body)['email']).to eq('auchiha.aopitho3l@handscuts.com')
+        expect(JSON.parse(response.body)['phone_number']).to eq('715-333-6687')
       end
 
       it 'returns status code 201' do
@@ -51,8 +51,8 @@ RSpec.describe "Users", type: :request do
 
     context 'when the record exists' do
       it 'returns the user' do
-        expect(json).not_to be_empty
-        expect(json['id']).to eq(user_id)
+        expect(JSON.parse(response.body)).not_to be_empty
+        expect(JSON.parse(response.body)['id']).to eq(user_id)
       end
 
       it 'returns status code 200' do
