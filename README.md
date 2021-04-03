@@ -1,24 +1,54 @@
-# README
+# Akibox Tutorial – Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a tutorial project to help you get to know Akita. It contains a Rails
+implementation of a REST API for a toy Dropbox-like service. You can use Akita
+to generate a model for this API, make some changes, and see the resulting
+effects on the API in Akita's semantic diffs.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+Make sure you have Ruby and Rails. This was tested with Ruby 2.7.2 and rails
+6.1.3.1. You can update rails with the following.
 
-* System dependencies
+```sh
+$ gem update rails
+```
 
-* Configuration
+## Installation
 
-* Database creation
+The following command will install the gems for this project.
+```sh
+$ bundle install
+```
 
-* Database initialization
+## Run integration tests
 
-* How to run the test suite
+This project comes with a few integration tests for the REST API. You can run
+them with the following command. The requests and responses made during the
+test are logged to a HAR file.
+```sh
+$ bundle exec rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Fire up the service!
 
-* Deployment instructions
+To start a web server that exposes the REST API:
+```sh
+$ rails s
+```
 
-* ...
+You can then make requests to the server at localhost:3000. While the server is
+running, its requests and responses are logged to a HAR file. Press CTRL+C to
+stop the server and flush the HAR file.
+
+## Examining HAR files and building models.
+
+Whether you run the integration tests or run the server, the requests and
+responses made will be logged to a file named `akita_trace_{timestamp}.har`.
+You can upload this HAR file to Akita for analysis. For details, see
+[here](https://docs.akita.software/docs/from-traffic-to-specs).
+
+## Adding new tests
+
+Tests for the REST API live in [spec/requests](spec/requests/). Try adding some
+new tests and look for the corresponding traffic in the HAR files.
