@@ -7,8 +7,8 @@ effects on the API in Akita's semantic diffs.
 
 ## Prerequisites
 
-Make sure you have Ruby and Rails. This was tested with Ruby 2.7.2 and rails
-6.1.3.1. You can update rails with the following.
+Make sure you have Ruby and Rails. This was tested with Ruby 2.7.2 and Rails
+6.1.3.1. You can update Rails with the following.
 
 ```sh
 $ gem update rails
@@ -41,7 +41,7 @@ You can then make requests to the server at localhost:3000. While the server is
 running, its requests and responses are logged to a HAR file. Press CTRL+C to
 stop the server and flush the HAR file.
 
-## Examining HAR files and building models.
+## Examining HAR files and building models
 
 Whether you run the integration tests or run the server, the requests and
 responses made will be logged to a file named `akita_trace_{timestamp}.har`.
