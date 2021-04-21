@@ -60,7 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    akita-har_logger (0.1.0)
+    akita-har_logger (0.2.1)
       json (~> 2.3)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
@@ -195,7 +195,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.15
+   2.2.16
