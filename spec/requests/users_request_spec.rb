@@ -4,7 +4,8 @@ RSpec.describe "Users", type: :request do
   # Initialize test data.
   let!(:users) { create_list(:user, 10) }
   let(:user_id) { users.first.id }
-
+  let(:env) { }
+  
   # Test suite for POST /users.
   describe 'POST /users' do
     # Valid payload.
@@ -47,7 +48,7 @@ RSpec.describe "Users", type: :request do
 
   # Test suite for GET /users/{user_id}.
   describe 'GET /users/:id' do
-    before { get "/users/#{user_id}" }
+    before { get "/users/#{user_id}", env: env }
 
     context 'when the record exists' do
       it 'returns the user' do
@@ -70,6 +71,19 @@ RSpec.describe "Users", type: :request do
       it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find User/)
       end
+    end
+
+    context 'when the header contain an integer' do
+      let(:user_id) { 1 }
+      let(:env) { { "HTTP_EXTRA_HEADER" => 75432 } }
+     
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find User/)
+      end       
     end
   end
 
