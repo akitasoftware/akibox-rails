@@ -43,6 +43,18 @@ RSpec.describe "Users", type: :request do
         expect(response.body).to match(/Validation failed/)
       end
     end
+
+    context 'when the request body is a frozen string' do
+      before {
+        post '/users',
+          headers: { 'CONTENT_TYPE' => 'application/json' },
+          params: valid_attributes.to_json.freeze
+      }
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
   end
 
   # Test suite for GET /users/{user_id}.
