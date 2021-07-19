@@ -44,6 +44,30 @@ RSpec.describe "Users", type: :request do
       end
     end
 
+    context 'when there is a header with a frozen string' do
+      before {
+        post '/users',
+          headers: { 'CONTENT_TYPE' => 'application/json'.freeze },
+          params: valid_attributes.to_json
+      }
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when there is a cookie with a frozen string' do
+      before {
+        cookies['frozen'] = 'yogurt'.freeze
+        post '/users',
+          params: valid_attributes
+      }
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
     context 'when the request body is a frozen string' do
       before {
         post '/users',
