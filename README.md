@@ -7,8 +7,8 @@ effects on the API in Akita's semantic diffs.
 
 ## Prerequisites
 
-Make sure you have Ruby and Rails. This was tested with Ruby 2.7.2 and Rails
-6.1.3.1. You can update Rails with the following.
+Make sure you have Ruby and Rails. This was tested with Ruby 3.0.2 and Rails
+6.1.4.1. You can update Rails with the following.
 
 ```sh
 $ gem update rails
